@@ -1,0 +1,74 @@
+﻿@{
+    ViewData["Title"] = "MyWork";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .image-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-gap: 20px;
+        }
+
+            .image-container > div {
+                position: relative;
+                overflow: hidden;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+            .image-container img {
+                display: block;
+                width: 100%;
+                height: auto;
+                border-radius: 8px 8px 0 0;
+            }
+
+        .price {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            text-align: center;
+            padding: 8px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>@ViewData["Title"]</h1>
+
+    <div class="image-container">
+        <div>
+            <img src="~/content/kokoshibou_demon_slayer_wallpaper_by_bigsur1234_dfdbv4y-pre.jpg" alt="Demon Slayer Wallpaper" height="600"/>
+            <div class="price">R50</div>
+        </div>
+        <div>
+            <img src="~/content/OIG2.jpg" alt="Another Cool Picture" />
+            <div class="price">R1000</div>
+        </div>
+        <div>
+            <img src="~/content/OIG1 (1).jpg" alt="Craftwork" />
+            <div class="price">R300</div>
+        </div>
+        <div>
+            <img src="~/content/oig3.upm4ccelyvvjw3n4e.jpg" alt="Beautiful Landscape" />
+            <div class="price">R200</div>
+    </div>
+    <div>
+            <img src="~/content/_8d5a95ca-dfbb-41fb-a5a9-e1e1d03a0d32.jpg" alt="cardboard creeper" />
+            <div class="price">R150 </div>
+    </div>
+</body>
+</html>
