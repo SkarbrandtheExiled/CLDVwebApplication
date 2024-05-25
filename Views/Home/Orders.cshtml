@@ -1,0 +1,44 @@
+﻿﻿@using CLDVwebApplication.Models
+@model List<CLDVwebApplication.Models.transactionTable>
+
+@{
+    ViewData["Title"] = "Orders";
+    var orders = ViewData["Orders"] as List<transactionTable>;
+}
+
+<div class="text-center">
+    <h1>orders</h1>
+    <p>
+        Please ensure that orders have been made prior to viewing this page. If the below
+        table is empty, it is highly probable that no orders have yet to be made
+    </p>
+</div>
+
+
+<h2>Order List:</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>transactionID</th>
+            <th>userID</th>
+            <th>productID</th>
+            <th>transactionDate</th>
+            <th>Quantity</th>
+            <th>totalAmount</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in orders)
+        {
+            <tr>
+                <td>@order.transactionID</td>
+                <td>@order.userID</td>
+                <td>@order.productID</td>
+                <td>@order.transactionDate</td>
+                <td>@order.Quantity</td>
+                <td>@order.TotalAmount</td>
+            </tr>
+        }
+    </tbody>
+</table>

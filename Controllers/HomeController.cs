@@ -2,48 +2,63 @@ using CLDVwebApplication.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace CLDVwebApplication.Controllers
+namespace CLDVwebApplication.Controllers;
+
+public class HomeController(ILogger<HomeController> logger) : Controller
 {
-    public class HomeController : Controller
+    private readonly ILogger<HomeController> _logger = logger;
+
+    public IActionResult Products(int userID)
     {
-        private readonly ILogger<HomeController> _logger;
+        var products = productTable.GetAllProducts();
 
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
+        ViewData["products"] = products;
+        ViewData["userID"] = userID;
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+        return View();
+    }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-        public IActionResult About()
-        {
-            return View();
-        }
-        public IActionResult myWork()
-        {
-            return View();
-        }
-        public IActionResult contact()
-        {
-            return View(); 
-        }
+    public IActionResult Login()
+    {
+        return View();
+    }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+    public IActionResult signUp()
+    {
+        return View();
+    }
 
-        internal object insert_user(HomeController users)
-        {
-            throw new NotImplementedException();
-        }
+    public IActionResult MyWork()
+    {
+        return View();
+    }
+
+    public IActionResult Index()
+    {
+        return View();
+    }
+
+    public IActionResult About()
+    {
+        return View();
+    }
+
+    public IActionResult contact()
+    {
+        return View();
+    }
+
+    public IActionResult Orders()
+    {
+        var orders = transactionTable.GetAllOrders();
+
+        ViewData["Orders"] = orders;
+        return View();
+    }
+
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    public IActionResult Error()
+    {
+        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 }

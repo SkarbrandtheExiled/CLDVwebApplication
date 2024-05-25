@@ -1,23 +1,21 @@
 ﻿using CLDVwebApplication.Models;
 using Microsoft.AspNetCore.Mvc;
-
 namespace CLDVwebApplication.Controllers
 {
     public class UserController : Controller
     {
-        public userTable usrtb = new userTable();
+        public userTable usrtbl = new userTable();
 
     [HttpPost]
-
-    public ActionResult About(userTable Users)
+    public ActionResult signUp(userTable Users)
     {
-        var result = usrtb.insert_user(Users);
-        return RedirectToAction("Index", "Home");
+        var result = usrtbl.insert_user(Users);
+        return RedirectToAction("Login", "Home");
     }
-
     [HttpGet]
-    public IActionResult About() {
-        return View(usrtb);
+
+    public IActionResult signUp() {
+        return View(usrtbl);
         }
     }
 }

@@ -19,8 +19,10 @@ html {
 
 body {
  margin-bottom: 60px;
+ overflow: scroll;
+
 }
 
 body {
-   background-image: url('../content/pngtree-frame-of-paper-craft-snowflakes-image_429933.jpg');
+    background-image: url('../content/pngtree-frame-of-paper-craft-snowflakes-image_429933.jpg');
 }
