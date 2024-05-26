@@ -7,7 +7,7 @@ namespace CLDVwebApplication.Controllers
     public class transactionController : Controller
     {
         [HttpPost]
-        public ActionResult PlaceOrder(int userID, int productID)
+        public ActionResult PlaceOrder(int userId, int productId)
         {
             try
             {
@@ -21,8 +21,8 @@ namespace CLDVwebApplication.Controllers
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
                         // Add parameters to the SqlCommand for userID and productID
-                        cmd.Parameters.AddWithValue("@userID", userID);
-                        cmd.Parameters.AddWithValue("@productID", productID);
+                        cmd.Parameters.AddWithValue("@userID", userId);
+                        cmd.Parameters.AddWithValue("@productID", productId);
 
                         // Open the SqlConnection
                         con.Open();

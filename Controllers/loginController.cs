@@ -17,13 +17,13 @@ namespace CLDVwebApplication.Controllers
         public ActionResult Login(string email, string name)
         {
             var loginModel = new loginModel();
-            int userID = loginModel.SelectUser(email, name);
-            if (userID != -1)
+            int userId = loginModel.SelectUser(email, name);
+            if (userId != -1)
             {
 
                 // User found, proceed with login logic (e.g., set authentication cookie)
                 // For demonstration, redirecting to a dummy page
-                return RedirectToAction("My Work", new { userID = userID});
+                return RedirectToAction("My Work", new { userId = userId});
             }
             else
             {

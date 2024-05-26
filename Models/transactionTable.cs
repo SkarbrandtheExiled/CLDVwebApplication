@@ -8,8 +8,8 @@ namespace CLDVwebApplication.Models
         public static SqlConnection Con = new(con_string);
 
         public int transactionID { get; set; }
-        public int userID { get; set; }
-        public int productID { get; set; }
+        public int userId { get; set; }
+        public int productId { get; set; }
         public DateTime transactionDate { get; set; }
         public int Quantity { get; set; }
         public decimal TotalAmount { get; set; }
@@ -30,8 +30,8 @@ namespace CLDVwebApplication.Models
                 var transaction = new transactionTable
                 {
                     transactionID = Convert.ToInt32(rdr["transactionTableID"]),
-                    userID = Convert.ToInt32(rdr["userID"]),
-                    productID = Convert.ToInt32(rdr["productID"]),
+                    userId = Convert.ToInt32(rdr["userID"]),
+                    productId = Convert.ToInt32(rdr["productID"]),
                     transactionDate = Convert.ToDateTime(rdr["transactionDate"]),
                     Quantity = Convert.ToInt32(rdr["Quantity"]),
                     TotalAmount = Convert.ToDecimal(rdr["totalAmount"])

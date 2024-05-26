@@ -10,7 +10,7 @@ namespace CLDVwebApplication.Models
         public static SqlConnection con = new SqlConnection(con_string);
         public int SelectUser(string email, string name)
         {
-            int userID = -1; // Default value if user is not found
+            int userId = -1; // Default value if user is not found
             using (SqlConnection con = new SqlConnection(con_string))
             {
                 string sql = "SELECT userID FROM userTable WHERE userEmail = @Email AND userName = @Name";
@@ -22,7 +22,7 @@ namespace CLDVwebApplication.Models
                 {
                     con.Open();
                     var result = cmd.ExecuteScalar();
-                    if (result != null && result != DBNull.Value) userID = Convert.ToInt32(result);
+                    if (result != null && result != DBNull.Value) userId = Convert.ToInt32(result);
                     
                 }
                 catch (Exception ex)
@@ -32,7 +32,7 @@ namespace CLDVwebApplication.Models
                     Console.WriteLine("An error occurred: " + ex.Message);
                 }
             }
-            return userID;
+            return userId;
         }
 
     }

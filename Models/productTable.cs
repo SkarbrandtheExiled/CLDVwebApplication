@@ -10,7 +10,7 @@ namespace CLDVwebApplication.Models
         public static SqlConnection con = new SqlConnection(con_string);
 
 
-        public int ProductID { get; set; }
+        public int productId { get; set; }
 
         public string Name { get; set; }
 
@@ -61,7 +61,7 @@ namespace CLDVwebApplication.Models
                 while (rdr.Read())
                 {
                     productTable product = new productTable();
-                    product.ProductID = Convert.ToInt32(rdr["productID"]);
+                    product.productId = Convert.ToInt32(rdr["productID"]);
                     product.Name = rdr["productName"]?.ToString() ?? string.Empty;
                     product.Price = rdr["productPrice"]?.ToString() ?? string.Empty;
                     product.Category = rdr["productCategory"]?.ToString() ?? string.Empty;

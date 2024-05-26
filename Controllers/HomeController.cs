@@ -8,12 +8,12 @@ public class HomeController(ILogger<HomeController> logger) : Controller
 {
     private readonly ILogger<HomeController> _logger = logger;
 
-    public IActionResult Products(int userID)
+    public IActionResult Products(int userId)
     {
         var products = productTable.GetAllProducts();
 
         ViewData["products"] = products;
-        ViewData["userID"] = userID;
+        ViewData["userID"] = userId;
 
         return View();
     }
@@ -45,6 +45,12 @@ public class HomeController(ILogger<HomeController> logger) : Controller
 
     public IActionResult contact()
     {
+        return View();
+    }
+    public IActionResult insertProducts()
+    {
+        var products = productTable.GetAllProducts();
+        ViewData["Products"] = products;
         return View();
     }
 

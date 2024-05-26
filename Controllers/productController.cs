@@ -1,23 +1,53 @@
 ﻿using CLDVwebApplication.Models;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CLDVwebApplication.Controllers
 {
-    public class productController : Controller
+    public class ProductController : Controller
     {
-        public productTable prodtbl = new productTable();
+        private readonly productTable _productTable;
 
-        [HttpPost]
-        public ActionResult myWork(productTable products)
+        public ProductController()
         {
-            var result2 = prodtbl.insert_product(products);
-            return RedirectToAction("Index", "Home");
+            _productTable = new productTable();
         }
 
         [HttpGet]
-        public ActionResult myWork()
+        public IActionResult InsertProducts()
         {
-            return View(prodtbl);
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult InsertProducts(productTable model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var result = _productTable.insert_product(model);
+
+                    if (result != -1) // or any other condition indicating success
+                    {
+                        // Product insertion successful
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        // Handle product insertion failure
+                        ModelState.AddModelError("", "Failed to insert the product.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Handle the exception thrown by insert_product
+                    ModelState.AddModelError("", ex.Message);
+                }
+            }
+
+            // If there are any validation errors, redisplay the form
+            return View(model);
         }
     }
 }
